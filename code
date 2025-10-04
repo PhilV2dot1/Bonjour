@@ -1,0 +1,38 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Bonjour {
+    
+    // Fonction pour dire bonjour
+    function direBonjour() public pure returns (string memory) {
+        return "Bonjour !";
+    }
+    
+    // Fonction pour dire bonjour avec un nom personnalisé
+    function direBonjourPersonnalise(string memory _nom) public pure returns (string memory) {
+        return string(abi.encodePacked("Bonjour ", _nom, " !"));
+    }
+    
+    // Fonction pour dire bonjour dans différentes langues
+    function direBonjourLangue(string memory _langue) public pure returns (string memory) {
+        bytes32 langueHash = keccak256(abi.encodePacked(_langue));
+        
+        if (langueHash == keccak256(abi.encodePacked("francais"))) {
+            return "Bonjour !";
+        } else if (langueHash == keccak256(abi.encodePacked("anglais"))) {
+            return "Hello!";
+        } else if (langueHash == keccak256(abi.encodePacked("espagnol"))) {
+            return "Hola!";
+        } else if (langueHash == keccak256(abi.encodePacked("allemand"))) {
+            return "Guten Tag!";
+        } else if (langueHash == keccak256(abi.encodePacked("italien"))) {
+            return "Ciao!";
+        } else if (langueHash == keccak256(abi.encodePacked("japonais"))) {
+            return "Konnichiwa!";
+        } else if (langueHash == keccak256(abi.encodePacked("chinois"))) {
+            return "Ni hao!";
+        } else {
+            return "Bonjour !";
+        }
+    }
+}
